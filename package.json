@@ -1,5 +1,5 @@
 {
-  "name": "y",
+  "name": "budget",
   "version": "1.0.0",
   "description": "Budget-Tracker-App-Backend",
   "main": "app.js",
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/Vandhana-Mohan/budget-tracker-app-backend.git"
   },
-  "author": "",
+  "author": "Vandhana",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Vandhana-Mohan/budget-tracker-app-backend/issues"
