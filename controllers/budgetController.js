@@ -19,5 +19,12 @@ budgets.get("/:arrayIndex", (req, res) => {
   }
 });
 
+// CREATE
+
+budgets.post("/", (req, res) => {
+  budgetsArray.push(req.body);
+  res.json(budgetsArray[budgetsArray.length - 1]);
+});
+
 
 module.exports = budgets;
