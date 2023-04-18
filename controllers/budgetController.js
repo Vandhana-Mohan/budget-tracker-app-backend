@@ -26,5 +26,16 @@ budgets.post("/", (req, res) => {
   res.json(budgetsArray[budgetsArray.length - 1]);
 });
 
+// DELETE
+
+budgets.delete("/:arrayIndex", (req, res) => {
+  if (budgetsArray[req.params.arrayIndex]) {
+    const deletedBudgets = budgetsArray.splice(req.params.arrayIndex, 1);
+    res.status(200).json(deletedBudgets);
+  } else {
+    res.status(404).json({ error: "Not Found" });
+  }
+});
+
 
 module.exports = budgets;
