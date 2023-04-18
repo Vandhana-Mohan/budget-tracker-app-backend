@@ -20,9 +20,23 @@ budgets.get("/:arrayIndex", (req, res) => {
 
 // CREATE
 
-budgets.post("/", (req, res) => {
-  budgetsArray.push(req.body);
-  res.json(budgetsArray[budgetsArray.length - 1]);
+budgets.post("/", budgetValidator, (req, res) => {
+  const { id, item_name, amount, date } = req.body;
+  if (id && item_name && amount && date) {
+    if (
+      typeof id === "string" &&
+      typeof item_name === "string" &&
+      typeof amount === "number" &&
+      typeof date === "string"
+    ) {
+      budgetsArray.push(req.body);
+      res.json(budgetsArray[budgetsArray.length - 1]);
+    } else {
+      res.status(400).json({ error: "Invalid transaction data" });
+    }
+  } else {
+    res.status(400).json({ error: "Transaction data is missing" });
+  }
 });
 
 // DELETE
