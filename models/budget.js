@@ -3,9 +3,18 @@ module.exports = [
     id: "A1",
     item_name: "savings",
     amount: 10000,
-    date: "",
+    date: "2023-03-27",
     from: "employer",
     category: "savings",
+  },
+
+  {
+    id: "A2",
+    item_name: "Income",
+    amount: 1000,
+    date: "2023-04-01",
+    from: "employer",
+    category: "Income",
   },
 
   {
