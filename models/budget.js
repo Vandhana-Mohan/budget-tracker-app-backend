@@ -7,6 +7,15 @@ module.exports = [
     from: "employer",
     category: "savings",
   },
+
+  {
+    id: "A3",
+    item_name: "Taxes",
+    amount: -300,
+    date: "2023-04-09",
+    from: "employer",
+    category: "Deduction",
+  },
 ];
 
 /*
