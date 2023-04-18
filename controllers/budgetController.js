@@ -3,7 +3,6 @@ const budgets = express.Router();
 const budgetsArray = require("../models/budget.js");
 const budgetValidator = require("../models/validators.js");
 
-
 budgets.get("/", (req, res) => {
   res.json(budgetsArray);
 });
@@ -29,10 +28,17 @@ budgets.post("/", (req, res) => {
 // DELETE
 
 budgets.delete("/:arrayIndex", (req, res) => {
-  if (budgetsArray[req.params.arrayIndex]) {
-    const deletedBudgets = budgetsArray.splice(req.params.arrayIndex, 1);
+  const index = req.params.arrayIndex;
+
+  if (isNaN(index)) {
+    // the provided index is not a number
+    res.status(400).json({ error: "Invalid index" });
+  } else if (budgetsArray[index]) {
+    // the budget at the provided index exists and can be deleted
+    const deletedBudgets = budgetsArray.splice(index, 1);
     res.status(200).json(deletedBudgets);
   } else {
+    // the provided index is out of range
     res.status(404).json({ error: "Not Found" });
   }
 });
@@ -48,6 +54,5 @@ budgets.put("/:index", budgetValidator, (req, res) => {
     res.status(404).json({ error: "Not Found" });
   }
 });
-
 
 module.exports = budgets;
