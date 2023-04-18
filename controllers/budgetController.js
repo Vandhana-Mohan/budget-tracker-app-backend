@@ -8,6 +8,16 @@ budgets.get("/", (req, res) => {
   res.json(budgetsArray);
 });
 
+// SHOW budget transactions
+
+budgets.get("/:arrayIndex", (req, res) => {
+  if (budgetsArray[req.params.arrayIndex]) {
+    res.json(budgetsArray[req.params.arrayIndex]);
+  } else {
+    res.status(404).json({ error: "Not Found" });
+    res.redirect("/budgets");
+  }
+});
 
 
 module.exports = budgets;
