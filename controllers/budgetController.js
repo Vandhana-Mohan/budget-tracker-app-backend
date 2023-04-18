@@ -4,12 +4,13 @@ const budgetsArray = require("../models/budget.js");
 const budgetValidator = require("../models/validators.js");
 
 budgets.get("/", (req, res) => {
-  res.json(budgetsArray);
+  res.json(budgetsArray); // Index page
 });
 
 // SHOW budget transactions
 
 budgets.get("/:arrayIndex", (req, res) => {
+  // Show page
   if (budgetsArray[req.params.arrayIndex]) {
     res.json(budgetsArray[req.params.arrayIndex]);
   } else {
@@ -21,6 +22,7 @@ budgets.get("/:arrayIndex", (req, res) => {
 // CREATE
 
 budgets.post("/", budgetValidator, (req, res) => {
+  // Create new transaction
   const { id, item_name, amount, date } = req.body;
   if (id && item_name && amount && date) {
     if (
@@ -42,6 +44,7 @@ budgets.post("/", budgetValidator, (req, res) => {
 // DELETE
 
 budgets.delete("/:arrayIndex", (req, res) => {
+  // Delete Transaction record
   const index = req.params.arrayIndex;
 
   if (isNaN(index)) {
@@ -60,6 +63,7 @@ budgets.delete("/:arrayIndex", (req, res) => {
 // UPDATE
 
 budgets.put("/:index", budgetValidator, (req, res) => {
+  // Update a transaction record
   const { index } = req.params;
   if (budgetsArray[index]) {
     budgetsArray[index] = req.body;
