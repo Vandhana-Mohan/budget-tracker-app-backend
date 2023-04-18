@@ -16,5 +16,29 @@ module.exports = [
     from: "employer",
     category: "income",
   },
+  {
+    id: "A2",
+    item_name: "savings",
+    amount: 3000,
+    date: "03/11/23",
+    from: "bank",
+    category: "savings",
+  },
+  {
+    id: "A3",
+    item_name: "Taxes",
+    amount: -300,
+    date: "2023-04-09",
+    from: "employer",
+    category: "Deduction",
+  },
 
-  
+  {
+    id: "A4",
+    item_name: "cat food",
+    amount: 50,
+    date: "02/12/23",
+    from: "pet-co",
+    category: "pets",
+  },
+];
