@@ -6,10 +6,10 @@ date- string - the date should be simple string. bonus use the date object and d
 from - string - transaction was with (ie. employer, bank, pet store, grocery store, etc)
 category - string - category this fall into (income, savings, pets, food, etc)
 */
-
+const { v4: uuidv4 } = require("uuid");
 module.exports = [
   {
-    id: "A1",
+    id: uuidv4(),
     item_name: "income",
     amount: 3000,
     date: "04/11/23",
@@ -17,7 +17,7 @@ module.exports = [
     category: "income",
   },
   {
-    id: "A2",
+    id: uuidv4(),
     item_name: "savings",
     amount: 3000,
     date: "03/11/23",
@@ -25,7 +25,7 @@ module.exports = [
     category: "savings",
   },
   {
-    id: "A3",
+    id: uuidv4(),
     item_name: "Taxes",
     amount: -300,
     date: "2023-04-09",
@@ -34,7 +34,7 @@ module.exports = [
   },
 
   {
-    id: "A4",
+    id: uuidv4(),
     item_name: "cat food",
     amount: 50,
     date: "02/12/23",
