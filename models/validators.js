@@ -1,5 +1,5 @@
 const budgetValidator = (req, res, next) => {
-  const { id, item_name, amount, date, from, category } = req.body; //destructure properties from req.body object
+  const { id, item_name, amount, date, from, category, deposit } = req.body; //destructure properties from req.body object
   if (id && item_name && amount && date) {
     if (
       typeof id === "string" &&
@@ -7,7 +7,8 @@ const budgetValidator = (req, res, next) => {
       typeof amount === "number" &&
       typeof date === "string" &&
       (!from || typeof from === "string") &&
-      (!category || typeof category === "string")
+      (!category || typeof category === "string") &&
+      (!deposit || typeof deposit === "boolean")
     ) {
       next();
     } else {

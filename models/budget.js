@@ -15,6 +15,7 @@ module.exports = [
     date: "04/11/23",
     from: "employer",
     category: "income",
+    deposit: false,
   },
   {
     id: uuidv4(),
@@ -23,6 +24,7 @@ module.exports = [
     date: "03/11/23",
     from: "bank",
     category: "savings",
+    deposit: false,
   },
   {
     id: uuidv4(),
@@ -31,6 +33,7 @@ module.exports = [
     date: "2023-04-09",
     from: "employer",
     category: "Deduction",
+    deposit: true,
   },
 
   {
@@ -40,5 +43,6 @@ module.exports = [
     date: "02/12/23",
     from: "pet-co",
     category: "pets",
+    deposit: false,
   },
 ];
