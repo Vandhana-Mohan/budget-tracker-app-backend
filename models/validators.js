@@ -1,22 +1,11 @@
 const budgetValidator = (req, res, next) => {
-  const { id, item_name, amount, date, from, category, deposit } = req.body; //destructure properties from req.body object
-  if (id && item_name && amount && date) {
-    if (
-      typeof id === "string" &&
-      typeof item_name === "string" &&
-      typeof amount === "number" &&
-      typeof date === "string" &&
-      (!from || typeof from === "string") &&
-      (!category || typeof category === "string") &&
-      (!deposit || typeof deposit === "boolean")
-    ) {
-      next();
-    } else {
-      res.status(400).json({ error: "Invalid transaction data" });
-    }
-  } else {
-    res.status(400).json({ error: "Transaction data is missing" });
+  const { item_name, amount, date } = req.body;
+  if (!item_name || !amount || !date) {
+    return res
+      .status(400)
+      .json({ error: "Transaction must contain a name, amount and a date" });
   }
+  next();
 };
 
 module.exports = budgetValidator;
