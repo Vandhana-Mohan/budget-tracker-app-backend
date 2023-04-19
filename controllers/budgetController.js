@@ -1,7 +1,7 @@
 const express = require("express");
 const budgets = express.Router();
 const budgetsArray = require("../models/budget.js");
-const budgetValidator = require("../models/validators.js");
+// const budgetValidator = require("../models/validators.js");
 
 budgets.get("/", (req, res) => {
   res.json(budgetsArray); // Index page
@@ -21,7 +21,7 @@ budgets.get("/:arrayIndex", (req, res) => {
 
 // CREATE
 
-budgets.post("/", budgetValidator, (req, res) => {
+budgets.post("/", (req, res) => {
   // Create new transaction
   const { id, item_name, amount, date } = req.body;
   if (id && item_name && amount && date) {
@@ -62,7 +62,7 @@ budgets.delete("/:arrayIndex", (req, res) => {
 
 // UPDATE
 
-budgets.put("/:index", budgetValidator, (req, res) => {
+budgets.put("/:index", (req, res) => {
   // Update a transaction record
   const { index } = req.params;
   if (budgetsArray[index]) {
