@@ -1,7 +1,7 @@
 const express = require("express");
 const budgets = express.Router();
 const budgetsArray = require("../models/budget.js");
-// const budgetValidator = require("../models/validators.js");
+const budgetValidator = require("../models/validators.js");
 
 budgets.get("/", (req, res) => {
   res.json(budgetsArray); // Index page
@@ -23,22 +23,8 @@ budgets.get("/:arrayIndex", (req, res) => {
 
 budgets.post("/", (req, res) => {
   // Create new transaction
-  const { id, item_name, amount, date } = req.body;
-  if (id && item_name && amount && date) {
-    if (
-      typeof id === "string" &&
-      typeof item_name === "string" &&
-      typeof amount === "number" &&
-      typeof date === "string"
-    ) {
-      budgetsArray.push(req.body);
-      res.json(budgetsArray[budgetsArray.length - 1]);
-    } else {
-      res.status(400).json({ error: "Invalid transaction data" });
-    }
-  } else {
-    res.status(400).json({ error: "Transaction data is missing" });
-  }
+  budgetsArray.push(req.body);
+  res.json(budgetsArray[budgetsArray.length - 1]);
 });
 
 // DELETE
@@ -46,7 +32,6 @@ budgets.post("/", (req, res) => {
 budgets.delete("/:arrayIndex", (req, res) => {
   // Delete Transaction record
   const index = req.params.arrayIndex;
-
   if (isNaN(index)) {
     // the provided index is not a number
     res.status(400).json({ error: "Invalid index" });
@@ -62,7 +47,7 @@ budgets.delete("/:arrayIndex", (req, res) => {
 
 // UPDATE
 
-budgets.put("/:index", (req, res) => {
+budgets.put("/:index", budgetValidator, (req, res) => {
   // Update a transaction record
   const { index } = req.params;
   if (budgetsArray[index]) {
